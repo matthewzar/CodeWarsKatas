@@ -55,6 +55,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Kyu1\SkycraperPuzzle6By6Tests.cs" />
+    <Compile Include="Kyu2\BrainFuckTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,7 @@
       <Name>CodeWarsCSharp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

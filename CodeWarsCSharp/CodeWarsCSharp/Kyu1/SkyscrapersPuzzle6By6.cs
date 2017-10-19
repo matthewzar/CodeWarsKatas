@@ -179,8 +179,7 @@ namespace CodeWarsCSharp.Kyu1
         /// <param name="colEnd"></param>
         /// <param name="colInc"></param>
         /// <param name="rowInc"></param>
-        private static
-            void GetDirectionIterationData(int[] clues, int clueIndex, out int rowStart, out int colStart,
+        private static void GetDirectionIterationData(int[] clues, int clueIndex, out int rowStart, out int colStart,
                 out int rowEnd, out int colEnd, out int colInc, out int rowInc)
         {
             var startEndDirections = GetViewingDirection(clues, clueIndex);
