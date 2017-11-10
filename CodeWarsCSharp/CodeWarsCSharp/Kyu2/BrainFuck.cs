@@ -7,6 +7,9 @@ using System.Xml;
 
 namespace CodeWarsCSharp.Kyu2
 {
+    /// <summary>
+    /// https://www.codewars.com/kata/526156943dfe7ce06200063e
+    /// </summary>
     public class BrainFuckInterpreter
     {
         string instructions;
