@@ -18,20 +18,20 @@ namespace CodeWarsCSharp.Kyu2
 
         private Dictionary<char, Action> ops;
 
-        public BrainFuckInterpreter(string program, string input)
+        public BrainFuckInterpreter(string program, string userInput)
         {
             instructions = program;
-            inputStream = input;
+            inputStream = userInput;
             ops = new Dictionary<char, Action>()
             {
-                { '>',this.incPntr},
-                { '<',this.decPntr},
-                { '+',this.incByte},
-                { '-',this.decByte},
-                { '.',this.output},
-                { ',',this.input},
-                { '[',this.jmpIfZero},
-                { ']',this.jmpIfNonZero},
+                { '>', incPntr},
+                { '<', decPntr},
+                { '+', incByte},
+                { '-', decByte},
+                { '.', output},
+                { ',', input},
+                { '[', jmpIfZero},
+                { ']', jmpIfNonZero},
             };
         }
 
@@ -101,42 +101,35 @@ namespace CodeWarsCSharp.Kyu2
 
         private void jmpIfZero()
         {
-            if (mem[pntr] != 0)
+            if (mem[pntr] == 0)
             {
-                instPointer++;
-                return;
+                var matches = 1;
+                do
+                {
+                    instPointer++;
+                    if (instructions[instPointer] == '[')
+                        matches++;
+                    if (instructions[instPointer] == ']')
+                        matches--;
+                } while (matches != 0);
             }
-
-            var matches = 1;
-            do
-            {
-                instPointer++;
-                if (instructions[instPointer] == '[')
-                    matches++;
-                if (instructions[instPointer] == ']')
-                    matches--;
-            } while (matches != 0);
-
             instPointer++;
         }
 
         private void jmpIfNonZero()
         {
-            if (mem[pntr] == 0)
+            if (mem[pntr] != 0)
             {
-                instPointer++;
-                return;
+                var matches = 1;
+                do
+                {
+                    instPointer--;
+                    if (instructions[instPointer] == '[')
+                        matches--;
+                    if (instructions[instPointer] == ']')
+                        matches++;
+                } while (matches != 0);
             }
-
-            var matches = 1;
-            do
-            {
-                instPointer--;
-                if (instructions[instPointer] == '[')
-                    matches--;
-                if (instructions[instPointer] == ']')
-                    matches++;
-            } while (matches != 0);
 
             instPointer++;
         }

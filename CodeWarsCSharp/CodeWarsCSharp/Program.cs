@@ -23,34 +23,20 @@ namespace CodeWarsCSharp
         }
     }
 
-    class Program
+    public class ReflectionAssistant
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// A temporary holding space for code that can be used to check whether a class
+        /// adheres to certain specified field/property signature requirments.
+        /// This was created in order to analyse CodeWars kata solutions that
+        /// were focused on implementing specific architectures, rather than logic problems.
+        /// For example "use a private get" or "use property, not a field" 
+        /// </summary>
+        private void ClassPropertyAnalyser()
         {
-            //                        var clues = new[]
-            //                        {
-            //                            3, 2, 2, 3, 2, 1,
-            //                            1, 2, 3, 3, 2, 2,
-            //                            5, 1, 2, 2, 4, 3,
-            //                            3, 2, 1, 2, 2, 4
-            //                        };
-            //
-            //            var expected = new[]
-            //            {
-            //                new[] {2, 1, 4, 3, 5, 6},
-            //                new[] {1, 6, 3, 2, 4, 5},
-            //                new[] {4, 3, 6, 5, 1, 2},
-            //                new[] {6, 5, 2, 1, 3, 4},
-            //                new[] {5, 4, 1, 6, 2, 3},
-            //                new[] {3, 2, 5, 4, 6, 1}
-            //            };
-            //
-            //            var actual = SkyscrapersPuzzle6By6.SolvePuzzle(clues);
-
-
             //Check that it has the correct constructor signature
             Type magicType = typeof(DemoClass);
-            ConstructorInfo magicConstructor = magicType.GetConstructor(new []{typeof(int)});
+            ConstructorInfo magicConstructor = magicType.GetConstructor(new[] { typeof(int) });
             object magicClassObject = magicConstructor.Invoke(new object[] { 24 });
 
             //check that it has the required private and public fields
@@ -78,15 +64,15 @@ namespace CodeWarsCSharp
             }
 
             PropertyInfo magicProperty = magicType.GetProperty("LimitedProperty", BindingFlags.Instance | BindingFlags.Public);
-            if(magicProperty.GetGetMethod() != null)
+            if (magicProperty.GetGetMethod() != null)
                 Console.WriteLine("Public Property exists");
-            if (magicProperty.GetSetMethod(nonPublic:true) != null)
+            if (magicProperty.GetSetMethod(nonPublic: true) != null)
                 Console.WriteLine("Private Property setter exists");
             MethodInfo magicMethod = magicProperty.GetSetMethod(true);
             magicMethod.Invoke(magicClassObject, new object[] { 100 });
-            if(((DemoClass)magicClassObject).LimitedProperty == 100)
+            if (((DemoClass)magicClassObject).LimitedProperty == 100)
                 Console.WriteLine("YEAH");
-            
+
             Console.WriteLine(((DemoClass)magicClassObject).LimitedProperty);
             magicMethod.Invoke(magicClassObject, new object[] { 100 });
             Console.WriteLine(((DemoClass)magicClassObject).LimitedProperty);
@@ -97,6 +83,17 @@ namespace CodeWarsCSharp
 
             Console.WriteLine("Press any key to quit");
             Console.ReadKey();
+        }
+    }
+
+    class Program
+    {
+        /// <summary>
+        /// This space is reserved for testing and trial of new solutions before they get a dedicated location.
+        /// </summary>
+        /// <param name="args"></param>
+        static void Main(string[] args)
+        {
         }
     }
 }

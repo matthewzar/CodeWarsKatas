@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 
 namespace CodeWarsCSharp.Kyu1
 {
-    //Working with 2d arrays/matrixes? These extension might be helpful
+    /// <summary>
+    /// Working with 2d arrays/matrixes? These extension should be helpful
+    /// </summary>
     public static class MatrixExtensions
     {
         /// <summary>
