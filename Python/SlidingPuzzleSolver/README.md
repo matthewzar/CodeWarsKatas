@@ -32,6 +32,17 @@ Transition sequence:
 ```
 Any valid transition sequence will be treated as correct.
 ### Solutions
+
+#### NaiveSolver
+
 NaiveSolver is a non-optimized solver, that uses a breadth first search to brute force a solution. It avoids some backtracking by preventing opposite moves from being made one after another, and it avoids infinite loops (at least in V2) by taking a non-recursive approach.
 
 NaiveSolver is only able to solve small puzzles, while the problem in questions asks for grids of up to 10X10. Potential solutions include an optimized variant of A* Search. Or, to avoid brute force, a Genetic Algorithm.
+
+#### SimpleGA
+
+SimpleGA applies a Genetic Algorithm to the problem. The results are promising for the current version, however the solver is subject to a local maxima (where the top row/s get solved leaving the bottom row\s with no room to maneuver). With a peak fitness of 4 on a 3X3 puzzle it means that the final row (and most of the second one) is too little space to navigate in.
+
+To resolve the local maxima issue with SimpleGA I have 2 proposed solutions:
+ - Add a more flexible fitness function (the current one only scores pieces in the final position, and only until it finds a mistake).
+ - See how larger grids behave regarding maxima, and turn the solution into a hybrid where the GA does an initial search leaving more traditional techniques to finish up whatever remains.
