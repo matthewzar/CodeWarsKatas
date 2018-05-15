@@ -1,18 +1,18 @@
 # [Sliding Puzzle Solver](https://www.codewars.com/kata/sliding-puzzle-solver/)
-#### Overview
+### Overview
 
 A sliding puzzle is a combination puzzle that challenges a player to slide (frequently flat) pieces along certain routes (usually on a board) to establish a certain end-configuration.
 
 Your goal for this kata is to write a function that produces a sequence of tile movements that solves the puzzle.
 ![Unsolved and solved slider puzzles](SliderDemo.png)
 
-#### Input
+### Input
 An n x n array/list comprised of integer values ranging from 0 to n^2 - 1 (inclusive), which represents a square grid of tiles. Note that there will always be one empty tile (represented by 0) to allow for movement of adjacent tiles.
 
-#### Output
+### Output
 An array/list comprised of any (but not necessarily all) of the integers from 1 to n^2 - 1, inclusive. This represents the sequence of tile moves for a successful transition from the initial unsolved state to the solved state. If the puzzle is unsolvable, return null(JavaScript) or None(Python).
 
-#### Test Example
+### Test Example
 Given:
 ```
 simple_example = [
@@ -31,6 +31,7 @@ Transition sequence:
 [13,14,15,12]    [13,14,15,12]    [13,14,15,12]    [13,14,15,12]    [13,14,15, 0] 
 ```
 Any valid transition sequence will be treated as correct.
-#### Solutions
+### Solutions
 NaiveSolver is a non-optimized solver, that uses a breadth first search to brute force a solution. It avoids some backtracking by preventing opposite moves from being made one after another, and it avoids infinite loops (at least in V2) by taking a non-recursive approach.
+
 NaiveSolver is only able to solve small puzzles, while the problem in questions asks for grids of up to 10X10. Potential solutions include an optimized variant of A* Search. Or, to avoid brute force, a Genetic Algorithm.
