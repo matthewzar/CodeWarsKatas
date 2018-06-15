@@ -46,6 +46,7 @@
     <Compile Include="Kyu1\SkyscrapersPuzzle6By6.cs" />
     <Compile Include="Kyu2\BrainFuck.cs" />
     <Compile Include="Kyu2\ExpressionEvaluator.cs" />
+    <Compile Include="Kyu4\MazePathFinder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
