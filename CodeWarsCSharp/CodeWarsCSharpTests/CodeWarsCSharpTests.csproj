@@ -62,6 +62,7 @@
     <Compile Include="Kyu2\BrainFuckTests.cs" />
     <Compile Include="Kyu2\ExpressionEvaluatorTests.cs" />
     <Compile Include="Kyu4\MazePathFinderTests.cs" />
+    <Compile Include="Kyu8\BulletSurvivalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
