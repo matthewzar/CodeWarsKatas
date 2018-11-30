@@ -1,6 +1,6 @@
 '''
-https://www.codewars.com/kata/count-of-positives-slash-sum-of-negatives/train/python
-Count positive numbers, and sum negatives.
+https://www.codewars.com/kata/53ee5429ba190077850011d4
+Double an integer
 '''
 double_integer = lambda x : 2*x
 
