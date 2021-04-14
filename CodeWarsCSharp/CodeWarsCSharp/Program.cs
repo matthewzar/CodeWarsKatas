@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using CodeWarsCSharp.Kyu1;
+using System.Numerics;
 
 namespace CodeWarsCSharp
 {
@@ -94,6 +97,38 @@ namespace CodeWarsCSharp
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+
+
+        }
+    }
+
+    public static class Immortal
+    {
+        /// set true to enable debug
+        public static bool Debug = false;
+
+        public static long ElderAge(BigInteger m, BigInteger y, BigInteger l, BigInteger t)
+        {
+            BigInteger T = 0;
+
+            while (y > 0)
+            {
+                var Y = y;
+                var x = m;
+                y &= y - 1;
+                while (x > 0)
+                {
+                    var X = x;
+                    x &= x - 1;
+                    var S = BigInteger.Max(X - x, Y - y);
+                    var s = BigInteger.Min(X - x, Y - y);
+                    var h = BigInteger.Max((x ^ y | S - 1) + 1 - l, 0);
+                    var w = BigInteger.Min(h, S);
+                    T += s * w * (h + h - w - 1) / 2;
+                }
+            }
+
+            return (long)(T % t);
         }
     }
 }
