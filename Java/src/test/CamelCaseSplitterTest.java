@@ -51,6 +51,6 @@ public class CamelCaseSplitterTest {
         var result = CamelCaseSplitter.split(input);
 
         // Assert
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 }
